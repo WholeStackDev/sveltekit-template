@@ -6,6 +6,7 @@ export async function post({request}) {
     let credentials = await request.json();
   
     const {session, error} = await supabase.auth.signIn(credentials);
+    log(session);
 
     if (error) {
         return {

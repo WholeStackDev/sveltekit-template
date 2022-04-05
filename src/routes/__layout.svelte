@@ -10,6 +10,7 @@
 
 <script>
 	import { goto } from '$app/navigation';
+	export let sessionData;
 
 	const nav = async (route) => {
 	    await goto(route);
