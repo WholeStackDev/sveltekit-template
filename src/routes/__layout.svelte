@@ -9,25 +9,19 @@
 </script>
 
 <script>
-	import { goto } from '$app/navigation';
+	import FaUser from 'svelte-icons/fa/FaUser.svelte';
+	import '../app.css';
 	export let sessionData;
-
-	const nav = async (route) => {
-	    await goto(route);
-	};
-
 </script>
 
-<div>
-	<!-- {#if sessionData?.authenticated}
-		<div>Profile</div>
-	{:else}
-		<div>Login</div>
-	{/if} -->
-	<div on:click={() => nav('/')}>Home</div>
-	<div on:click={() => nav('/profile')}>Profile</div>
-	<div on:click={() => nav('/login')}>Login</div>
-	<div on:click={() => nav('/signup')}>Sign Up</div>
-</div>
+<nav class={'shadow-md py-4 mb-6'}>
+	<div class={'flex justify-end mr-8 gap-4'}>
+		{#if sessionData?.authenticated}
+			<a href="/profile" class="h-6"><FaUser class={'h-1'}/></a>
+		{:else}
+			<a href="/login">Login</a>
+		{/if}
+	</div>
+</nav>
 
 <slot />
